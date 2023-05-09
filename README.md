@@ -7,3 +7,4 @@
 2. [Preliminaries](./chapter_preliminaries/)
 
     0. [notes](./chapter_preliminaries/0_notes.md)
+    1. [data manipulation and processing](./chapter_preliminaries/1_data_manipulation_and_processing.ipynb): 
