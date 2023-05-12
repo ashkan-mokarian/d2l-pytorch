@@ -5,6 +5,7 @@
 # Skipped but important
 
 - About **Autograd** and **chain rule**: Check [this](./chapter_preliminaries/0_notes.md#automatic-differentiation-chain-rule-forwardpropagation-vs-backwardpropagationnotunderstood-autograd). I don't understand it, but if you spend some time, a very good resource is linked.
+- Read more about central limit theorem if you find out. Why does the true average uncertainty tend towards a normal distribution centered at the true mean with rate $\mathcal{O}(1/\sqrt{n})$.
 
 # TOC
 
@@ -23,3 +24,12 @@
 
     0. [notes](./chapter_linear_NN_regression/0_notes.md): Generalization and model selection;
     1. [Linear Regression](./chapter_linear_NN_regression/1_linear_regression.ipynb): Some implementation basics for d2l OOP implementation in notebooks; Creating dataset using d2l; linear regression implementation from scratch; Weight decay notes and implmenetation;
+
+4. [Linear Neural Network for Classification](./chapter_linear_NN_classification/)
+
+    0. [notes](./chapter_linear_NN_classification/0_notes.md): cross-entropy loss; A naive softmax implementation can lead to over/under-flow; Central limit theorem; Environments and **distribution shift**;
+    1. [linear classification with Fashion-MNIST](): Softmax linear regression implementation;
+
+5. [Multilayer Perceptrons](./chapter_multilayer_perceptrons/)
+
+    0. [notes](./chapter_multilayer_perceptrons/0_notes.md): 
