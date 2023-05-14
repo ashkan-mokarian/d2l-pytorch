@@ -40,3 +40,9 @@
     1. [MLP](./chapter_multilayer_perceptrons/1_mlp.ipynb): plots of relu, sigmoid, tanh, scratch and concise implementation for MLP;
     2. [Dropout](./chapter_multilayer_perceptrons/2_dropout.ipynb)
     3. (**Could not make it work. NaN loss**)[House prediction on Kaggle](./chapter_multilayer_perceptrons/3_kaggle_house_prices.ipynb): implementation of house prediction on Kaggle dataset; using pandas for loading csv data, and preprocessing; first checking with simple linear regression model, to see if data processing works and also get a baseline;
+
+6. [Builder's Guide](./chapter_builder_guide/)
+
+    0. [notes](./chapter_builder_guide/0_notes.md): nothing
+    1. [IO and saving models on disk](./chapter_builder_guide/1_io.ipynb)
+    2. [GPU](./chapter_builder_guide/2_gpu.ipynb): By default, parameters stored on gpu; operation on multiple parameters require them to be on the same device, otherwise cannot conclude where to store result, or where to do the computations;
