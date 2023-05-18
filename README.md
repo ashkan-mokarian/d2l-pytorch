@@ -46,3 +46,8 @@
     0. [notes](./chapter_builder_guide/0_notes.md): nothing
     1. [IO and saving models on disk](./chapter_builder_guide/1_io.ipynb)
     2. [GPU](./chapter_builder_guide/2_gpu.ipynb): By default, parameters stored on gpu; operation on multiple parameters require them to be on the same device, otherwise cannot conclude where to store result, or where to do the computations;
+
+7. [CNN](./chapter_cnn/)
+
+    0. [notes](./chapter_cnn/0_notes.md): convolution kernel, padding, striding, computation for multi-channel
+    1. [LeNet](./chapter_cnn/1_cnn.ipynb): not much
