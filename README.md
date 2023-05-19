@@ -2,14 +2,18 @@
 
 - **Error** when `!pip install d2l`: instead do `!pip install d2l==1.0.0a0`
 
-# Skipped but important or important in general
+# Very important parts for a quick look
+
+- Generalization in DNN: Weight regularization - weight decay (not so powerful); Early-stopping (essential for noisy datasets); Dropout (adding noise to training to make the problem hard for network);
+
+- Look at the iimplementation of [batch norm](./chapter_modern_cnn/4_batchnorm.ipynb): Contains a good example for coding. Note that the main functionality of the added behaviour of batch norm is seperated from the module definition in a seperate function. This part contains the algorithms and functionality of it. The model book keeping, parameters, lr, moving averages, etc, are seperated from the math inside the module.
+
+# Skipped
 
 - About **Autograd** and **chain rule**: Check [this](./chapter_preliminaries/0_notes.md#automatic-differentiation-chain-rule-forwardpropagation-vs-backwardpropagationnotunderstood-autograd). I don't understand it, but if you spend some time, a very good resource is linked.
 - Read more about central limit theorem if you find out. Why does the true average uncertainty tend towards a normal distribution centered at the true mean with rate $\mathcal{O}(1/\sqrt{n})$.
 
 - [Neural tangent kernels](https://papers.nips.cc/paper_files/paper/2018/hash/5a4be1fa34e62bb8a6ec6b91d2462f5a-Abstract.html): a good framework for understanding DNN. apparently it relates DNN (parametric model) to non-parametric models (kernel methods). In short, there are more analytical arguments that can be made for non-parametric methods, and by this connection, it can serve an analytical tool for understanding over-parameterized DNN.
-
-- Generalization in DNN: Weight regularization - weight decay (not so powerful); Early-stopping (essential for noisy datasets); Dropout (adding noise to training to make the problem hard for network);
 
 # TOC
 
@@ -51,3 +55,11 @@
 
     0. [notes](./chapter_cnn/0_notes.md): convolution kernel, padding, striding, computation for multi-channel
     1. [LeNet](./chapter_cnn/1_cnn.ipynb): not much
+
+8. [Modern CNN](./chapter_modern_cnn/)
+
+    0. [notes](./chapter_modern_cnn/0_notes.md): Conv _blocks_ instead of Conv _layers_; stem, body, head design pattern; multi-branching in googlenet; Batch Normalization; ResNet and residual connections; Grouped Convolutions to reduce memory and time by dividing the channels into multiple branches; Some general Design concepts for designing CNNs; Final note about **Scalability trumps Inductive biases**, transformer better than CNN;
+    1. [VGG](./chapter_modern_cnn/1_vgg.ipynb): Implementation of VGG-11
+    2. [NiN](./chapter_modern_cnn/2_NiN.ipynb): " of NiN, takes less memory by using 1x1 in early and intermediate layers and nn.AdaptiveAveragePool2d in the end.
+    3. [GoogleNet](./chapter_modern_cnn/3_googlenet.ipynb): not much to see, model too complicated, a lot of parameters for the number of channels which do not give any hinsights. maybe just overal design pattern seems interesting. implementation of inception block, and the modular design of such a large network could also be interesting to look at.
+    4. [Batch Norm](./chapter_modern_cnn/4_batchnorm.ipynb): Implementation of batch norm from scratch; batch norm is placed between the conv/FC layer and the consequent non-linearity layer;
