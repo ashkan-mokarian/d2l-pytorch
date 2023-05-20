@@ -63,3 +63,10 @@
     2. [NiN](./chapter_modern_cnn/2_NiN.ipynb): " of NiN, takes less memory by using 1x1 in early and intermediate layers and nn.AdaptiveAveragePool2d in the end.
     3. [GoogleNet](./chapter_modern_cnn/3_googlenet.ipynb): not much to see, model too complicated, a lot of parameters for the number of channels which do not give any hinsights. maybe just overal design pattern seems interesting. implementation of inception block, and the modular design of such a large network could also be interesting to look at.
     4. [Batch Norm](./chapter_modern_cnn/4_batchnorm.ipynb): Implementation of batch norm from scratch; batch norm is placed between the conv/FC layer and the consequent non-linearity layer;
+
+9. [RNN](./chapter_rnn/)
+
+    0. [notes](./chapter_rnn/0_notes.md): autoregressision; $\tau -th order markov condition$;
+    1. [Markov model](./chapter_rnn/1_markov_model.ipynb): k-step ahead prediction and accumulation of errors problem showcased on a synthetic dataset;
+    2. [Language Model](./chapter_rnn/2_language_model.ipynb): Preprossing raw text into sequence data, tokenizer, vacabulary set; Zipf law for n-grams; Dataset sampling strategy ot How to sample train and val datasets from a corpus;
+    3. [RNN](./chapter_rnn/3_rnn.ipynb): 
