@@ -15,6 +15,8 @@
 
 - [Neural tangent kernels](https://papers.nips.cc/paper_files/paper/2018/hash/5a4be1fa34e62bb8a6ec6b91d2462f5a-Abstract.html): a good framework for understanding DNN. apparently it relates DNN (parametric model) to non-parametric models (kernel methods). In short, there are more analytical arguments that can be made for non-parametric methods, and by this connection, it can serve an analytical tool for understanding over-parameterized DNN.
 
+- BLEU Score for sequence to sequence evaluation. Described [here](https://d2l.ai/chapter_recurrent-modern/seq2seq.html#evaluation-of-predicted-sequences).
+
 # TOC
 
 1. [Introduction](./chapter_introduction/)
@@ -70,3 +72,13 @@
     1. [Markov model](./chapter_rnn/1_markov_model.ipynb): k-step ahead prediction and accumulation of errors problem showcased on a synthetic dataset;
     2. [Language Model](./chapter_rnn/2_language_model.ipynb): Preprossing raw text into sequence data, tokenizer, vacabulary set; Zipf law for n-grams; Dataset sampling strategy ot How to sample train and val datasets from a corpus;
     3. [RNN](./chapter_rnn/3_rnn.ipynb): 
+
+10. [Modern RNN](./chapter_modern_rnn/)
+
+    0. [notes](./chapter_modern_rnn/notes.md): lstm; GRU; 
+    1. [LSTM](./chapter_modern_rnn/1_lstm_and_rest.ipynb): lstm; Deep RNN; 
+    2. [Encoder Decoder]():
+
+11. [Transformer](./chapter_transformer/)
+
+    0. [notes](./chapter_transformer/0_notes.md)
