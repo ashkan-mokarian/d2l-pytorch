@@ -81,4 +81,8 @@
 
 11. [Transformer](./chapter_transformer/)
 
-    0. [notes](./chapter_transformer/0_notes.md)
+    0. [notes](./chapter_transformer/0_notes.md): scaled dot-product and additive attention scoring function; Multi-head attention very short description; Self-attention; Positional Encoding; The transformer architecure; 
+    1. [attention](./chapter_transformer/1_attention.ipynb): heatmap visualization of attention weights; Nadaraya-Watson regression, a simple example of regression problem using attention pooling; Masked softmax; scaled dot-product and additive attention;
+    2. [Bahadanau Attention](./chapter_transformer/2_bahadanau_attention_mechanism.ipynb): nothing too special, just the implementations of seq2seq model using attention but not exactly like trasformers. probably better models to look at in the notebooks below.
+    3. [Transformer](./chapter_transformer/3_transformer.ipynb): Multi-head attention, scratch implementation with reshaping convenience functions for parallel computation of all heads; Positional encoding; encoder-decoder implementation for sequence task using transformer self-attention;
+    4. [ViT](./chapter_transformer/4_ViT.ipynb): Patch Embedding using conv; ViT implementation;
