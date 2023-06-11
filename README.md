@@ -86,3 +86,15 @@
     2. [Bahadanau Attention](./chapter_transformer/2_bahadanau_attention_mechanism.ipynb): nothing too special, just the implementations of seq2seq model using attention but not exactly like trasformers. probably better models to look at in the notebooks below.
     3. [Transformer](./chapter_transformer/3_transformer.ipynb): Multi-head attention, scratch implementation with reshaping convenience functions for parallel computation of all heads; Positional encoding; encoder-decoder implementation for sequence task using transformer self-attention;
     4. [ViT](./chapter_transformer/4_ViT.ipynb): Patch Embedding using conv; ViT implementation;
+
+12. [Optimization Algorithms](./chapter_optimization/)
+
+    0. [notes](./chapter_optimization/0_notes.md): Convexity; Dynamic learning rate; SGD; Momentum; AdaGrad; RMSprop; Adadelta; Adam; LR scheduling;
+
+14. [Computer Vision](./chapter_computer_vision/)
+
+    0. [notes](./chapter_computer_vision/0_notes.md):
+
+17. [Reinforcement Learning](./chapter_rl/)
+
+    0. [notes](./chapter_rl/0_notes.md): Markov Dicision process; Value, Action-Value, Policy functions; Value iteration algorithm;
