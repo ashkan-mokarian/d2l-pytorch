@@ -91,6 +91,10 @@
 
     0. [notes](./chapter_optimization/0_notes.md): Convexity; Dynamic learning rate; SGD; Momentum; AdaGrad; RMSprop; Adadelta; Adam; LR scheduling;
 
+13. [Computational Performance](./chapter_computational_performance/)
+
+    0. [notes](./chapter_computational_performance/0_notes.md): Imperative vs. Symbolic programming; Asynchronous computation; blockers and barriers between frontend and backend in ML frameworks; Parallelism of GPUs; non-blocking communication; 
+    1. [some code](./chapter_computational_performance/1_computational_performance.ipynb): Nothing special.
 14. [Computer Vision](./chapter_computer_vision/)
 
     0. [notes](./chapter_computer_vision/0_notes.md):
