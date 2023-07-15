@@ -93,11 +93,16 @@
 
 13. [Computational Performance](./chapter_computational_performance/)
 
-    0. [notes](./chapter_computational_performance/0_notes.md): Imperative vs. Symbolic programming; Asynchronous computation; blockers and barriers between frontend and backend in ML frameworks; Parallelism of GPUs; non-blocking communication; 
+    0. [notes](./chapter_computational_performance/0_notes.md): Imperative vs. Symbolic programming; Asynchronous computation; blockers and barriers between frontend and backend in ML frameworks; Parallelism of GPUs; non-blocking communication; Hardware short introduction; Multiple-GPU training strategies and data-parallelism;
     1. [some code](./chapter_computational_performance/1_computational_performance.ipynb): Nothing special.
+
 14. [Computer Vision](./chapter_computer_vision/)
 
-    0. [notes](./chapter_computer_vision/0_notes.md):
+    0. [notes](./chapter_computer_vision/0_notes.md): Some basic Augmentation methods in `torchvision.transforms`; `Compose[transforms]` for combining multiple augmentations; A particular case of transfer learning: fine-tuning; Anchor box; AnchorBoxes as training data for object detection; Multi-scale object detection; Semantic segmentation (mainly in the notebook explained and not here); transposed convolutions for upsampling; FCN; initializing transposed convolutions using bilinear interpolation; predicting semantic segmentations for images larger than input size; Neural Style Transfer (using a pretrained CNN to update parameters of a synthesized image using backpropagation); 
+    1. [Object Detection](./chapter_computer_vision/1_object_detection.ipynb): anchor box implementation based on a list of sizes and ratios;
+    2. [SSD](./chapter_computer_vision/2_SSD.ipynb): Single Shot Multibox Object Detection implementation;  
+    3. [Semantic Segmentation](./chapter_computer_vision/3_semantic_segmentation.ipynb): Implementation for reading VOC dataset, doing necessary transformation of colors into labels or indices for the label maps, creating dataset and dataloader class; Removing the head of a ResNet18, replacing with a 1x1 layer to get the num_classes channels and adding transposed conv layer to build the whole semantic segmentation network; Not continued because the rest was just training and evaluation;
+    4. [Neural Style Transfer](./chapter_computer_vision/4_neural_style_transfer.ipynb): uses a style image to apply the style to a content image. Pretrained VGG is used to extract features. The parameters of the synthesized image is the model and weights to be trained, and VGG is frozen in this scenario. Content loss is the squared loss of features for one of the layers close to ouput, and image also initialized with content image. For Style loss, the Gram matrix of several layers is compared and not the features itself, but just the correlation of their features to match only the style and not the contents. Total variation loss is used for denoising.
 
 17. [Reinforcement Learning](./chapter_rl/)
 
