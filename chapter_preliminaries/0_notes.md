@@ -1,31 +1,31 @@
 # Notes
 
-### **Backpropagation and memory**
-For doing automatic differentiation (aka autograd) using backpropagation, we have the parameters of the model which have fixed memory allocated. If we want to compute gradient for each, we also allocate memory for their backprop values, and we keep them fixed. Because in many iterations, if at each step, we would allocate memory and free again, this causes a lot of memory overhead and management, slows down the algorithm, and may risk running out of memory. So with this, now you understand why we need to tell pytorch whether a variable requires extra memory for backprop or not. It is done either at declaration `x = torch.tensor(..., requires_grad=True)` or with method call `x.requires_grad(True)`. There is also `requires_grad_` which doesn't check if the variable is a leaf node. The former one checks and throws an error. Also make sure to zero the gradient buffer at each iteration, otherwise the
-new `backward()` call will add to the buffer. This comes handy when gradient of sum of losses needs to be computed.
+### Dynaic Computation Graph
 
-### **Backpropagation on non-scalar value**
+* **requires_grad only for parameter leaf nodes**: You must tell PyTorch which tensors need gradients using requires_grad=True. You only track for leaf nodes, if you try requires_grad for the other non-leaf nodes, you get error. Leaf nodes are parameters or inputs, and in almost all cases you don't need gradients for inputs, so requires_grad only for parameter leaf nodes.
+
+* **Gradient Accumulation is default behaviour**: By default, .backward() adds gradients to the .grad buffer rather than overwriting them. This is essential for Gradient Accumulation (simulating larger batches) but requires you to call optimizer.zero_grad() or x.grad.zero_()联 at every step to avoid "double-counting" gradients from previous batches.
+
+* **Dynamic computation graph**: PyTorch uses a dynamic computational graph, which is rebuilt every forward pass. However, the .grad buffers for leaf nodes (model parameters) are persistent. Reusing these pre-allocated buffers avoids the overhead of constant allocation/deallocation during millions of training iterations.
+The dynamic computational graph is built everytime before the forward pass. it's like a train building the rails as it moves forward. This enables flexibility, e.g. for doing control flows (if-statements) in the graph, or dealing with varying size matrices during computations. also frees up VRAM. This also allows for debugging or adding print statements in the graph. it is fast bcuz c++ and garbage collection backend, but still can do torch.JIT or torch.compile to create static graphs which improves speed in production. but remember that the overhead of cleaning up intermediate buffers and the computation graph is not too much, it just changes a pointer, pytorch keeps the freed of intermediate buffers as caches and do not give it back to the system. </br>
+and because it is dynamic, you can use whatever python offers (if, while, ...) and pytorch orchestrates an interplay with heavy matrix computations on gpu, and building the graph on cpu. that's why with dynamic computation graph, one can use python for manipulation or debugging. The only overhead is that gpu computations stalls to send data back to cpu for checks if needed, but this is not too much. for very small models where computations are small, the overhead of the cpu part might become too large in comparison to the gpu part, but for larger models it is like 5% or 10%. but you get the huge advantgage of debugging. The biggest fault of a dynamic graph is probably the optimizations a compiler can do, eg fusing operations and memory management if it knows ahead of time. If too worried about the performance, one can do torch.compile which traces the graph building for some steps, and compiles the graph based on that, and if something unexpected hapens, reverts back again to the dynamic mode.
+
+
+### Backpropagation on non-scalar value
 Each framework deals with it differently. Essentially has to be reduced to a scalar. In pytorch, some vector $\bf{v}$, called _gradient_, such that `backward` will compute $\bf{v}^T \partial_{\bf{x}}\bf{y}$ is computed which reduces the gradient to a scalar. `y.backward(gradient=torch.ones(len(y)))`. This one does the same but is faster `y.sum().backward()`.
 
-
-# Not understood
-
-### **In 2.1.6 Converting to other python objects**
+### Underlying memory and in-place operations
 Claims that both tensor and ndarray classes share the same underlying memory and if changed in-place (= using [:] or +=) it changes the other too. But when running this, the memory is different.
 ```pytorch
 A = np.array([1, 2, 3])
 B = torch.from_numpy(A)
 assert id(A) == id(B)
 ```
-**Answer**: keyword here is underlying memory. They are both python objects, but in the class definition, they have a pointer to a more primitive type, which this could be shared between both, hence underlying memory is shared.
-**Note**: do **in-place** assignments so that memory does not dereference in one and eventually lead to memory leak.
+**Answer**:
+False (the ids are not the same), because they are different object, one numpy and the other pytorch objects, with different locations in memory. **BUT** they point to the same underlying memory location. That's why you **should** do in-place operations on them, i.e. A+=1. Otherwise with A=A+1, python does A+1 and allocates new underlaying memory where the new A points to, so the value that B is refering to will not change, and now new memory for A, and they don't point to the same location, and memory leaks, etc.
 
-### **In ipynb:2_derivate..., Gradient and python control flow** and also at **2.5.4 in d2l.ai**
-How flexible can the control flow be? Does this make the training too slow, because each time building a new computation graph, since e.g. a is input and changes? How is the derivative calculated for checking?
 
-## **Automatic differentiation, Chain-rule, Forwardpropagation vs. Backwardpropagation**(#notunderstood-autograd)
-I really don't understand the details. Apparently when we have tensor inputs and scalar output as it is in DL, backpropagation is much more effiecient than forwardpropagation. But forwardpropagation does not need to save intermediate values. A very good resource can be found here: [Autograd: Forward vs backward propagation of chain rule](https://mblondel.org/teaching/autodiff-2020.pdf)
-
-### **Exercises 5,6,7,8 remain unsolveled**: [permalink here](https://d2l.ai/chapter_preliminaries/autograd.html#exercises)
+## Deep Dive in Automatic differentiation, Chain-rule, Forwardpropagation vs. Backwardpropagation
+A very good resource can be found here, but a little difficult to understand and needs more time: [Autograd: Forward vs backward propagation of chain rule](https://mblondel.org/teaching/autodiff-2020.pdf)
 
 # Ideas

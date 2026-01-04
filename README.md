@@ -3,9 +3,6 @@
 - **Error** when `!pip install d2l`: instead do `!pip install d2l==1.0.0a0`
 
 # Very important parts for a quick look
-
-- Generalization in DNN: Weight regularization - weight decay (not so powerful); Early-stopping (essential for noisy datasets); Dropout (adding noise to training to make the problem hard for network);
-
 - Look at the iimplementation of [batch norm](./chapter_modern_cnn/4_batchnorm.ipynb): Contains a good example for coding. Note that the main functionality of the added behaviour of batch norm is seperated from the module definition in a seperate function. This part contains the algorithms and functionality of it. The model book keeping, parameters, lr, moving averages, etc, are seperated from the math inside the module.
 
 # Skipped
